@@ -11,7 +11,7 @@ import com.devsuperior.demo.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query("SELECT u FROM User u JOIN FETCH u.roles WHERE u.email = :email")
+	@Query("SELECT u FROM User u JOIN FETCH u.roles WHERE UPPER(u.email) = UPPER(:email)")
 	User searchByEmail(String email);
 
 }
